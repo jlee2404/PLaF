@@ -62,6 +62,8 @@ let rec eval_expr : expr -> exp_val ea_result =
     eval_expr e >>=
     pair_of_pairVal >>= fun (_,r) ->
     return r
+  | EmptyTree ->
+    return (TreeVal(Empty))
   | Debug(_e) ->
     string_of_env >>= fun str ->
     print_endline str; 
